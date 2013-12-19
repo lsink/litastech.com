@@ -10,5 +10,9 @@ class Projects(models.Model):
 	timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
 	updated = models.DateTimeField(auto_now=True, auto_now_add=False)
 
+	class Meta:
+		ordering = ['name']
+		verbose_name_plural = 'Projects'
+
 	def __unicode__(self):
-		return self.name
+		return self.name + ' - ' + self.site_url
