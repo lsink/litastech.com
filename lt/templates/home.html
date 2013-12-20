@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Projects</h2>
+	<div class="row marketing">
+    	{% for project in projects %}
+
+        <div class="col-md-4">
+          	<div class="thumbnail">
+		     	<img src="media/{{ project.image }}" alt="...">
+		     	<div class="caption">
+			        <h4>{{ project.name }}</h4>
+			        <p>...</p>
+			        <p><a href="{{ project.site_url }}" class="btn btn-primary" role="button">View</a> <a href="{{project.github_url}}" class="btn btn-default" role="button">GitHub</a></p>
+	      		</div>
+	    	</div>
+        </div>
+
+        {% if forloop.last %}
+    	</div>
+    	{% else %}
+	        {% if forloop.counter|divisibleby:'3' %}
+	        	</div>
+	        	<div class="row marketing">
+	        {% endif %}
+        {% endif %}
+		{% endfor %}
+{% endblock %}
